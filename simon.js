@@ -10,21 +10,37 @@ const counterDays = document.getElementById('days')
 let xmasDate = new Date('Dec 25 , 2022 00:00:00').getTime();
 console.log(xmasDate);
 
+
+function logTimeXmas() {
 // stabilisco una variabile che mi faccia vedere la data del giorno di oggi
 let currentDate = new Date().getTime();
-console.log(currentDate);
+
 
 // stabilisco una variabile che mi faccia vedere la differenza in millisecondi tra le due date
 let timeDistance = xmasDate - currentDate
-console.log(timeDistance)
+
 
 // trovo il valore esatto dei secondi, minuti, ore e giorni con dei calcoli
 
+// GIORNI
 let days = Math.floor(timeDistance / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((timeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((timeDistance % (1000 * 60)) / 1000);
-  console.log(days,hours,minutes,seconds);
+counterDays.innerText = days;
 
+//ORE
+let hours = Math.floor((timeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+counterHours.innerText = hours;
+
+//MINUTI
+let minutes = Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60));
+counterMinutes.innerText = minutes;
+
+//SECONDI
+let seconds = Math.floor((timeDistance % (1000 * 60)) / 1000);
+counterSeconds.innerText = seconds;
+}
+
+// applico un countdown usando le timing functions
+ 
+setInterval(logTimeXmas, 1000);
 
 
